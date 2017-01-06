@@ -1,45 +1,34 @@
-" Affichage des numéro de lignes
+" Plug plugin manager configuration
+set nocompatible
+filetype plugin indent on
+execute pathogen#infect()
+
+" Display line number
 set number
-" Activation de la coloration syntaxique
+" Syntax coloration
 syntax on
 " Tabulation
-set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" Sublime Text 2 style
-"set background=dark
+
 colorscheme monokai
 
-" Recherche insensible à la casse
+" Insensitive case search
 set ic
 
-" Configuration de Vundle
-set nocompatible
-filetype off
-" set rtp+=~/.vim/bundle/vundle/
-" call vundle#rc()
-"Bundle 'gmarik/vundle'
-"Bundle 'Lokaltog/vim-powerline'
-"Bundle 'tpope/vim-fugitive'
-"Bundle 'pangloss/vim-javascript'
-"Bundle '2072/PHP-Indenting-for-VIm'
-"filetype plugin indent on
+" Silent is set to avoid a warning on machines without git
+silent call! plug#begin('~/.vim/bundle')
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'pangloss/vim-javascript'
+Plug '2072/PHP-Indenting-for-VIm'
+Plug 'mipmip/vim-fluid'
+call plug#end()
 
-"call plug#begin()
-"Plug 'Lokaltog/vim-powerline'
-"Plug 'tpope/vim-fugitive'
-"Plug 'pangloss/vim-javascript'
-"Plug '2072/PHP-Indenting-for-VIm'
-"Plug 'mipmip/vim-fluid'
-"call plug#end()
-
-" Configuration powerline
 set laststatus=2
 set encoding=utf-8
 set t_Co=256
-let g:Powerline_symbols = 'fancy'
-"let g:Powerline_theme='my'
 
 " Auto complétion automatique pour les fichiers
 autocmd BufNewFile,BufRead *.ts   set syntax=typoscript
@@ -47,6 +36,9 @@ autocmd BufNewFile,BufRead *.less   set syntax=less
 
 set clipboard=unnamedplus
 
-" Ouverture par défaut des splits à droite et en bas
+" Default splits opening below and right
 set splitbelow
 set splitright
+
+" Remap // in visual mode to search text under the cursor
+vnoremap // y/<C-R>"<CR>

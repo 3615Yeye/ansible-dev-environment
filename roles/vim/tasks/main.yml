@@ -6,3 +6,13 @@
 
 - name: Monokai colorscheme 
   template: src=.vim/colors/monokai.vim dest=/home/ronan/.vim/colors/monokai.vim
+
+- name: Creating autoload directory
+  file: path=/home/ronan/.vim/autoload state=directory
+
+- name: Installing vim plugin manager Plug
+  template: src=.vim/autoload/pathogen.vim dest=/home/ronan/.vim/autoload/pathogen.vim
+
+- synchronize:
+    src: /home/ronan/.vim/bundle/
+    dest: /home/ronan/.vim/bundle/
