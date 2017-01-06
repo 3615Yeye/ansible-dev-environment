@@ -12,18 +12,20 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-colorscheme monokai
+colorscheme gruvbox
+set background=dark
 
 " Insensitive case search
 set ic
 
 " Silent is set to avoid a warning on machines without git
-silent call! plug#begin('~/.vim/bundle')
+silent! call plug#begin('~/.vim/bundle')
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'mipmip/vim-fluid'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 set laststatus=2

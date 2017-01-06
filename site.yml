@@ -1,6 +1,12 @@
+- name: Local vim configuration
+  hosts: localhost
+  connection: local
 
-- name: Configuration de vim
-  hosts: typo3
+  roles:
+    - vim
+
+- name: Vim configuration on dev servers
+  hosts: dev
 
   roles:
     - vim

@@ -1,17 +1,14 @@
 - name: Vim configuration file
   template: src=.vimrc.j2 dest=/home/ronan/.vimrc
 
-- name: Creating configuration directories
-  file: path=/home/ronan/.vim/colors state=directory
-
-- name: Monokai colorscheme 
-  template: src=.vim/colors/monokai.vim dest=/home/ronan/.vim/colors/monokai.vim
-
 - name: Creating autoload directory
   file: path=/home/ronan/.vim/autoload state=directory
 
-- name: Installing vim plugin manager Plug
+- name: Installing vim plugin manager Pathogen
   template: src=.vim/autoload/pathogen.vim dest=/home/ronan/.vim/autoload/pathogen.vim
+
+- name: Installing vim plugin manager Plug
+  template: src=.vim/autoload/plug.vim dest=/home/ronan/.vim/autoload/plug.vim
 
 - synchronize:
     src: /home/ronan/.vim/bundle/
