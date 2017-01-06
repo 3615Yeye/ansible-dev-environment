@@ -1,0 +1,6 @@
+
+- name: Configuration de vim
+  hosts: typo3
+
+  roles:
+    - vim

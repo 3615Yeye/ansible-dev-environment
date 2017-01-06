@@ -1,0 +1,8 @@
+- name: Vim configuration file
+  template: src=.vimrc.j2 dest=/home/ronan/.vimrc
+
+- name: Creating configuration directories
+  file: path=/home/ronan/.vim/colors state=directory
+
+- name: Monokai colorscheme 
+  template: src=.vim/colors/monokai.vim dest=/home/ronan/.vim/colors/monokai.vim
