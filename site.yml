@@ -3,10 +3,11 @@
   connection: local
 
   roles:
-    - vim
+  - vim
 
-- name: Vim configuration on dev servers
+- name: Deploying configuration of my tools on the dev servers
   hosts: dev
 
   roles:
     - vim
+    - bash
