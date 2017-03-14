@@ -11,6 +11,9 @@ alias lowro='lowriter --view'
 alias loc='localc'
 alias locro='localc --view'
 
+alias ba='vim ~/.bash_aliases'
+alias bae='vim ~/.bash_aliases_env'
+
 # Safety first ;)
 function rm() {
     if [ "$#" -gt 0 -a "$1" = "-rf" ] && ([ "$#" -gt 1 -a "$2" = "typo3conf" ] || [ "$#" -gt 1 -a "$2" = "typo3conf/" ]); then

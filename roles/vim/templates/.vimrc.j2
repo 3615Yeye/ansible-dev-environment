@@ -1,42 +1,48 @@
-" Plug plugin manager configuration
-set nocompatible
-filetype plugin indent on
-execute pathogen#infect()
-
-" Display line number
-set number
-" Syntax coloration
-syntax on
-" Tabulation
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
-colorscheme gruvbox
-set background=dark
-
-" Insensitive case search
-set ic
-
+" Plug plugin manager for Vim
 " Silent is set to avoid a warning on machines without git
-silent! call plug#begin('~/.vim/bundle')
+silent! call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'mipmip/vim-fluid'
 Plug 'morhetz/gruvbox'
+" Snippets
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+" Optional:
+Plug 'honza/vim-snippets'
 call plug#end()
 
-set laststatus=2
-set encoding=utf-8
-set t_Co=256
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-" Auto complétion automatique pour les fichiers
+set number " Display line number
+syntax on " Syntax coloration
+" Tabulation
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Colorscheme settings
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark='hard'
+
+set ic " Insensitive case search (Warn : also active using the search & replace functionality)
+
+set laststatus=2 " Keep status always on 
+set encoding=utf-8 " Open all files as utf-8
+set t_Co=256 " Tell vim he can use 256 terminal colors, nothing less ;)
+
+" Setting syntax highlighting for specials files extensions
 autocmd BufNewFile,BufRead *.ts   set syntax=typoscript
 autocmd BufNewFile,BufRead *.less   set syntax=less
 
-set clipboard=unnamedplus
+set clipboard=unnamedplus " Tried to set vim default buffer to the system clipboard but it doesn't work
 
 " Default splits opening below and right
 set splitbelow
@@ -44,3 +50,6 @@ set splitright
 
 " Remap // in visual mode to search text under the cursor
 vnoremap // y/<C-R>"<CR>
+
+" Remap :w< command to :w (common mistake on azerty keyboard)
+" command w< w

@@ -4,12 +4,9 @@
 - name: Creating autoload directory
   file: path=/home/ronan/.vim/autoload state=directory
 
-- name: Installing vim plugin manager Pathogen
-  template: src=.vim/autoload/pathogen.vim dest=/home/ronan/.vim/autoload/pathogen.vim
-
 - name: Installing vim plugin manager Plug
   template: src=.vim/autoload/plug.vim dest=/home/ronan/.vim/autoload/plug.vim
 
 - synchronize:
-    src: /home/ronan/.vim/bundle/
-    dest: /home/ronan/.vim/bundle/
+    src: /home/ronan/.vim/plugged/
+    dest: /home/ronan/.vim/plugged/
