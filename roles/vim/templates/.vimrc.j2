@@ -11,8 +11,8 @@ Plug 'morhetz/gruvbox'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
-" Optional:
 Plug 'honza/vim-snippets'
+Plug '~/.vim/plugged/mysnippets'
 call plug#end()
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -41,6 +41,7 @@ set t_Co=256 " Tell vim he can use 256 terminal colors, nothing less ;)
 " Setting syntax highlighting for specials files extensions
 autocmd BufNewFile,BufRead *.ts   set syntax=typoscript
 autocmd BufNewFile,BufRead *.less   set syntax=less
+autocmd BufNewFile,BufRead *.html   set syntax=fluid " To use my snippets for the Fluid templating engine 
 
 set clipboard=unnamedplus " Tried to set vim default buffer to the system clipboard but it doesn't work
 
