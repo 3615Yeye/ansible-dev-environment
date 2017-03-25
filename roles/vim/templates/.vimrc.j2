@@ -7,6 +7,7 @@ Plug 'pangloss/vim-javascript'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'mipmip/vim-fluid'
 Plug 'morhetz/gruvbox'
+Plug 'posva/vim-vue'
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -54,3 +55,19 @@ vnoremap // y/<C-R>"<CR>
 
 " Remap :w< command to :w (common mistake on azerty keyboard)
 " command w< w
+
+" Toggle between 2 and 4 spaces indentation & mapping to ctrl + i
+let g:indent_spaces = 4
+function ToggleIndent()
+    if g:indent_spaces == 4
+        set tabstop=2
+        set shiftwidth=2
+        echo "Indentation set to 2 spaces"
+    else
+        set tabstop=4
+        set shiftwidth=4
+        echo "Indentation set to 4 spaces"
+    endif
+endfunction
+
+map <c-i> :call ToggleIndent() <CR>
