@@ -5,6 +5,7 @@
   roles:
     - vim
     - bash
+    - git
 
 - name: Deploying configuration of my tools on the dev servers
   hosts: dev
