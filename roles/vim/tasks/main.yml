@@ -8,5 +8,5 @@
   template: src=.vim/autoload/plug.vim dest=/home/ronan/.vim/autoload/plug.vim
 
 - synchronize:
-    src: /home/ronan/.vim/plugged/
+    src: roles/vim/templates/.vim/plugged/
     dest: /home/ronan/.vim/plugged/
