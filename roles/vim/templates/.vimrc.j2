@@ -9,6 +9,7 @@ Plug 'mipmip/vim-fluid'
 Plug 'morhetz/gruvbox'
 Plug 'elmar-hinz/vim.typoscript'
 Plug 'posva/vim-vue'
+Plug 'mbbill/undotree'
 " Snippets
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
@@ -16,11 +17,6 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug '~/.vim/plugged/mysnippets'
 call plug#end()
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set number " Display line number
 syntax on " Syntax coloration
@@ -51,24 +47,50 @@ set clipboard=unnamedplus " Tried to set vim default buffer to the system clipbo
 set splitbelow
 set splitright
 
-" Remap // in visual mode to search text under the cursor
-vnoremap // y/<C-R>"<CR>
-
-" Remap :w< command to :w (common mistake on azerty keyboard)
-" command w< w
-
 " Toggle between 2 and 4 spaces indentation & mapping to ctrl + i
 let g:indent_spaces = 4
 function ToggleIndent()
     if g:indent_spaces == 4
         set tabstop=2
         set shiftwidth=2
+        let g:indent_spaces = 2
         echo "Indentation set to 2 spaces"
     else
         set tabstop=4
         set shiftwidth=4
+        let g:indent_spaces = 4
         echo "Indentation set to 4 spaces"
     endif
 endfunction
 
+"
+" Keyboard shortcuts
+"
 map <c-i> :call ToggleIndent() <CR>
+nnoremap <F5> :UndotreeToggle <CR> " Shortcut to call the undo tree
+nnoremap <F12> :noh <CR> " Shortcut to hide previous search highlighting
+vnoremap // y/<C-R>"<CR> " Remap // in visual mode to search text under the cursor
+" Remap :w< command to :w (common mistake on azerty keyboard)
+" command w< w
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+"
+" Storage
+"
+" Making sure to have the directory to store changes of a file between each file editions
+silent !mkdir -p ~/.vim_undodir 
+" Making sure to have the directory to store Vim .swp temporary files
+silent !mkdir -p ~/.vim_backup 
+
+" Storing in a directory all changes to use them even if the file is closed
+if has("persistent_undo")
+    set undodir=~/.vim_undodir/
+    set undofile
+endif
+" Storing the backup files in the home directory
+set backupdir=~/.vim_backup
