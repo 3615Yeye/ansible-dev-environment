@@ -32,6 +32,7 @@ set background=dark
 let g:gruvbox_contrast_dark='hard'
 
 set ic " Insensitive case search (Warn : also active using the search & replace functionality)
+set incsearch " Tell vim to search while typing
 
 set laststatus=2 " Keep status always on 
 set encoding=utf-8 " Open all files as utf-8
@@ -69,6 +70,7 @@ endfunction
 "
 map <c-i> :call ToggleIndent() <CR>
 nnoremap <F5> :UndotreeToggle <CR> " Shortcut to call the undo tree
+map <F9> :set ft=fluid <CR>
 nnoremap <F12> :noh <CR> " Shortcut to hide previous search highlighting
 vnoremap // y/<C-R>"<CR> " Remap // in visual mode to search text under the cursor
 " Remap :w< command to :w (common mistake on azerty keyboard)
