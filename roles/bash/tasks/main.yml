@@ -1,14 +1,14 @@
 # including .bash_aliases file if present
 - lineinfile:
-    dest: /home/ronan/.bashrc
+    dest: ~/.bashrc
     state: present
     line: "if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases ; fi # Including .bash_aliases file if present"
 
 # including .bash_aliases_env, to load specific aliases to this environment
 - lineinfile:
-    dest: /home/ronan/.bashrc
+    dest: ~/.bashrc
     state: present
     line: "if [ -f ~/.bash_aliases_env ]; then . ~/.bash_aliases_env ; fi # including .bash_aliases_env, to load specific aliases to this environment"
 
 - name: Deploying .bash_aliases
-  template: src=.bash_aliases dest=/home/ronan/.bash_aliases
+  template: src=.bash_aliases dest=~/.bash_aliases

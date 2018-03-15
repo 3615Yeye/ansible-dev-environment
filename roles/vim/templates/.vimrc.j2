@@ -27,16 +27,15 @@ set shiftwidth=4
 set expandtab
 
 " Colorscheme settings
-colorscheme gruvbox
 set background=dark
-let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
 set ic " Insensitive case search (Warn : also active using the search & replace functionality)
 set incsearch " Tell vim to search while typing
 
 set laststatus=2 " Keep status always on 
 set encoding=utf-8 " Open all files as utf-8
-set t_Co=256 " Tell vim he can use 256 terminal colors, nothing less ;)
+set termguicolors " Tell vim to use as much colors as the terminal emulator support
 
 " Setting syntax highlighting for specials files extensions
 autocmd BufNewFile,BufRead *.ts   set syntax=typoscript
@@ -49,26 +48,9 @@ set clipboard=unnamedplus " Tried to set vim default buffer to the system clipbo
 set splitbelow
 set splitright
 
-" Toggle between 2 and 4 spaces indentation & mapping to ctrl + i
-let g:indent_spaces = 4
-function ToggleIndent()
-    if g:indent_spaces == 4
-        set tabstop=2
-        set shiftwidth=2
-        let g:indent_spaces = 2
-        echo "Indentation set to 2 spaces"
-    else
-        set tabstop=4
-        set shiftwidth=4
-        let g:indent_spaces = 4
-        echo "Indentation set to 4 spaces"
-    endif
-endfunction
-
 "
 " Keyboard shortcuts
 "
-map <c-i> :call ToggleIndent() <CR>
 nnoremap <F5> :UndotreeToggle <CR> " Shortcut to call the undo tree
 map <F9> :set ft=fluid <CR>
 nnoremap <F12> :noh <CR> " Shortcut to hide previous search highlighting

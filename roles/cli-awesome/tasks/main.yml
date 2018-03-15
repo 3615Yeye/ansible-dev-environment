@@ -1,0 +1,25 @@
+- name: Install CLI base programs
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: true
+  with_items:
+    - konsole
+
+- name: Creating fonts directory
+  file: path=~/.local/share/fonts state=directory
+
+- name: Téléchargements des fonts
+  get_url:
+    url: https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-{{item}}.ttf?raw=true
+    dest: ~/.local/share/fonts/FiraCode-{{item}}.ttf
+  with_items:
+    - Regular
+    - Bold
+    - Light
+    - Medium
+    - Retina
+
+- name: Vide le cache des fonts
+  command: fc-cache -f
+  register: mymotd

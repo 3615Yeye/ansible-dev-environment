@@ -1,3 +1,9 @@
+- name: Installing CLI tools
+  hosts: localhost
+  roles:
+    - cli
+    - cli-awesome
+
 - name: Local vim configuration
   hosts: localhost
   connection: local

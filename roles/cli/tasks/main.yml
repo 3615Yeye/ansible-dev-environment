@@ -1,0 +1,10 @@
+- name: Install CLI base programs
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: true
+  with_items:
+    - vim
+    - zsh
+    - tmux
+    - konsole

@@ -1,12 +1,12 @@
 - name: Vim configuration file
-  template: src=.vimrc.j2 dest=/home/ronan/.vimrc
+  template: src=.vimrc.j2 dest=~/.vimrc
 
 - name: Creating autoload directory
-  file: path=/home/ronan/.vim/autoload state=directory
+  file: path=~/.vim/autoload state=directory
 
 - name: Installing vim plugin manager Plug
-  template: src=.vim/autoload/plug.vim dest=/home/ronan/.vim/autoload/plug.vim
+  template: src=.vim/autoload/plug.vim dest=~/.vim/autoload/plug.vim
 
 - synchronize:
     src: roles/vim/templates/.vim/plugged/
-    dest: /home/ronan/.vim/plugged/
+    dest: ~/.vim/plugged/
