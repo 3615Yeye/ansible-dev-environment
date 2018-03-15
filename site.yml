@@ -4,18 +4,8 @@
     - cli
     - cli-awesome
 
-- name: Local vim configuration
-  hosts: localhost
-  connection: local
-
-  roles:
-    - vim
-    - bash
-    - git
-
 - name: Deploying configuration of my tools on the dev servers
-  hosts: typo
+  hosts: dev-servers
 
   roles:
-    - vim
-    - bash
+    - cli
