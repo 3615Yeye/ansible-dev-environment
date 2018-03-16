@@ -28,7 +28,9 @@ set expandtab
 
 " Colorscheme settings
 set background=dark
-colorscheme gruvbox
+if filereadable( expand("$HOME/.vim/plugged/gruvbox/colors/gruvbox.vim") )
+    colorscheme gruvbox
+endif
 
 set ic " Insensitive case search (Warn : also active using the search & replace functionality)
 set incsearch " Tell vim to search while typing

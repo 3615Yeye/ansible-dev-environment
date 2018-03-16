@@ -9,7 +9,6 @@
 
 - name: Creating fonts directory
   file: path=~/.local/share/fonts state=directory
-
 - name: Downloading Fira Code font
   get_url:
     url: https://github.com/tonsky/FiraCode/blob/master/distr/ttf/FiraCode-{{item}}.ttf?raw=true
@@ -20,7 +19,27 @@
     - Light
     - Medium
     - Retina
-
 - name: Updating fonts cache
   command: fc-cache -f
-  register: mymotd
+
+- name: Creating directory for zsh plugin manager Antigen
+  file: path=~/.zsh state=directory
+- name: Downloading Antigen
+  get_url:
+    url: https://git.io/antigen
+    dest: ~/.zsh/antigen.zsh
+- name: Setting up zsh config file
+  template: src=.zshrc dest=~/.zshrc
+- lineinfile:
+    dest: ~/.bashrc
+    state: present
+    line: "if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases ; fi # Including .bash_aliases file if present"
+
+- name: Creating Konsole conf directory
+  file: path=~/.local/share/konsole state=directory
+- name: Downloading gruvbox theme for Konsole
+  get_url:
+    url: https://raw.githubusercontent.com/morhetz/gruvbox-contrib/master/konsole/Gruvbox_dark.colorscheme
+    dest: ~/.local/share/konsole/Gruvbox_dark.colorscheme
+- name: Setting up zsh config file
+  template: src=MinimalGruvbox.profile dest=~/.local/share/konsole/Gruvbox_dark.colorscheme

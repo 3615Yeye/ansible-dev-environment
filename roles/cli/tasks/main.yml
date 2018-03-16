@@ -21,14 +21,18 @@
 - name: Deploying .bash_aliases
   template: src=.bash_aliases dest=~/.bash_aliases
 
-- name: Creating autoload directory
-  file: path=~/.vim/autoload state=directory
-- name: Creating autoload directory
-  file: path=~/.vim/plugged state=directory
-- name: Vim configuration file
-  template: src=.vimrc dest=~/.vimrc
-- name: Installing vim plugin manager Plug
-  template: src=.vim/autoload/plug.vim dest=~/.vim/autoload/plug.vim
+- name: Creating directories for Vim
+  file: path={{ item }} state=directory
+  with_items:
+      - ~/.vim/autoload
+      - ~/.vim/plugged
+- name: Moving file for Vim
+  template: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {src: ".vimrc", dest: "~/.vimrc" }
+    - {src: ".vim/autoload/plug.vim", dest: "~/.vim/autoload/plug.vim" }
+- name: Installing Vim plugins
+  command: 'vim +PlugInstall +qall'
 
 - name: Git aliases
   git_config:

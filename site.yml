@@ -5,7 +5,7 @@
     - cli-awesome
 
 - name: Deploying configuration of my tools on the dev servers
-  hosts: dev-servers
+  hosts: server-group
 
   roles:
     - cli
