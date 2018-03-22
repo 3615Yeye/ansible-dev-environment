@@ -3,7 +3,12 @@ source ~/.zsh/antigen.zsh
 
 # Getting bash defined aliases
 source ~/.bash_aliases
-source ~/.bash_aliases_env
+if [ -f ~/.bash_aliases_env ]; then
+    source ~/.bash_aliases_env
+fi
+if [ -f ~/.bash_proxy ]; then
+    source ~/.bash_proxy
+fi
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh

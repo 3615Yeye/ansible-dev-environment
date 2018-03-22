@@ -5,7 +5,7 @@ UseFontLineChararacters=true
 
 [General]
 Command=/usr/bin/tmux
-Name=Profil 1
+Name=Awesome CLI
 Parent=FALLBACK/
 
 [Scrolling]

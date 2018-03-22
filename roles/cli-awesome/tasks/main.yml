@@ -42,4 +42,10 @@
     url: https://raw.githubusercontent.com/morhetz/gruvbox-contrib/master/konsole/Gruvbox_dark.colorscheme
     dest: ~/.local/share/konsole/Gruvbox_dark.colorscheme
 - name: Setting up zsh config file
-  template: src=MinimalGruvbox.profile dest=~/.local/share/konsole/Gruvbox_dark.colorscheme
+  template: src=awesome-CLI.profile dest=~/.local/share/konsole/awesome-cli.profile
+
+- name: 
+  lineinfile:
+    dest: ~/.tmux.conf
+    state: present
+    line: "set-option -g default-shell /bin/zsh"
