@@ -1,0 +1,14 @@
+- name: Download extension installation script
+  get_url:
+    url: https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/ubuntugnome/gnomeshell-extension-manage
+    dest: /usr/local/bin/gnome-shell-extension-manage
+    mode: '0755'
+
+- name: Install the latest version of extensions (need a reboot afterwards)
+  shell: gnome-shell-extension-manage --install --version latest --extension-id {{ item }}
+  with_items:
+    - 1638      # Pixel Saver Fork
+    - 906       # Sound Input & Output Device Chooser
+    - 1319      # GSConnect
+    - 1401      # Bluetooth quick connect
+    - 307       # Dash to dock

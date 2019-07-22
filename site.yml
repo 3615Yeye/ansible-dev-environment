@@ -3,6 +3,7 @@
   roles:
     - cli
     - cli-awesome
+    - gnome-shell-extensions
 
 - name: Deploying configuration of my tools on the dev servers
   hosts: server-group
