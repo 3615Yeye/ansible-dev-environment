@@ -1,0 +1,14 @@
+- name: Install CLI advanced programs
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: true
+  with_items:
+    - ffmpeg
+    - kid3
+    - python3-pip
+
+- pip:
+    name: youtube-dl
+    state: latest
+  become: true
