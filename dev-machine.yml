@@ -1,0 +1,7 @@
+- name: Dev machine setup
+  hosts: localhost
+  roles:
+    - dev-tools
+    - hippymood-utils
+    #- cli-awesome
+    #- gnome-shell-extensions

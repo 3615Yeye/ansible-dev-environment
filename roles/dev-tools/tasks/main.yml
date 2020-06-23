@@ -1,0 +1,36 @@
+- name: Programs installation
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: true
+  with_items:
+    - vim
+    - git
+    - zsh 
+    - alacritty
+    - tmux
+    - tmuxinator
+    - docker
+    - docker-compose
+    - tree
+    - stress
+    - s-tui
+    - ranger
+    - fonts-firacode
+
+- name: Adding user ronan to docker group
+  user:
+    name: ronan
+    groups: docker
+    append: yes
+  become: true
+
+- name: Updating fonts cache
+  command: fc-cache -f
+
+- name: Bash aliases import setup
+  blockinfile:
+    path:  ~/.bashrc
+    block: |
+      if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases ; fi # Including .bash_aliases file if present
+      if [ -f ~/.bash_aliases_env ]; then . ~/.bash_aliases_env ; fi # including .bash_aliases_env, to load specific aliases to this environment
