@@ -17,6 +17,9 @@
     - s-tui
     - ranger
     - fonts-firacode
+    - gnome-tweaks
+    - fzf
+    - ripgrep
 
 - name: Adding user ronan to docker group
   user:
