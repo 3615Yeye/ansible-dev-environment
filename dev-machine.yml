@@ -3,5 +3,4 @@
   roles:
     - dev-tools
     - hippymood-utils
-    #- cli-awesome
-    #- gnome-shell-extensions
+    - virtualization

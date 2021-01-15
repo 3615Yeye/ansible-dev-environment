@@ -1,0 +1,13 @@
+- name: Programs installation
+  package:
+    name: "{{ item }}"
+    state: latest
+  become: true
+  with_items:
+    - vim
+    - qemu
+    - qemu-kvm 
+    - libvirt-daemon
+    - bridge-utils
+    - virt-manager
+    - virtinst

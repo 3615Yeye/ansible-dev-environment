@@ -6,6 +6,7 @@
   with_items:
     - ffmpeg
     - kid3
+    - kid3-cli
     - python3-pip
 
 - pip:
